@@ -1,4 +1,139 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Marcin Goncerzewicz]]></title><description><![CDATA[Software Developer]]></description><link>https://dragarthpl.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 28 May 2020 09:33:08 GMT</lastBuildDate><item><title><![CDATA[Czym żyje dzisiaj moje IT]]></title><description><![CDATA[Dzielę się z Tobą, moimi źródłami do inspiracji, wiedzy i miejscami, które dostarczają mi w świecie It rozrywki]]></description><link>https://dragarthpl.github.io//posts/czym-zyje-dzisiaj-moje-it</link><guid isPermaLink="false">https://dragarthpl.github.io//posts/czym-zyje-dzisiaj-moje-it</guid><pubDate>Thu, 28 May 2020 08:13:32 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Marcin Goncerzewicz]]></title><description><![CDATA[Software Developer]]></description><link>https://dragarthpl.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 14 Mar 2022 14:06:20 GMT</lastBuildDate><item><title><![CDATA[Value Objects dla węży]]></title><description><![CDATA[Zbiór wiedzy o Value Objects oraz przykłady w Pythonie]]></description><link>https://dragarthpl.github.io//posts/value-objects-dla-wezy</link><guid isPermaLink="false">https://dragarthpl.github.io//posts/value-objects-dla-wezy</guid><pubDate>Fri, 05 Jun 2020 23:08:32 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#czym-sa-value-objects-i-jakie-maja-znaczenie-strategiczne&quot;&gt;Czym są Value Objects i jakie mają znaczenie strategiczne&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#zysk-biznesowy&quot;&gt;Zysk biznesowy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#primitive-obsession&quot;&gt;Primitive Obsession&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#immutable&quot;&gt;Immutable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#side-effect&quot;&gt;Side Effect&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#comparasion&quot;&gt;Comparasion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#przyklad&quot;&gt;Przykład&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;czym-są-value-objects-i-jakie-mają-znaczenie-strategiczne&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#czym-s%C4%85-value-objects-i-jakie-maj%C4%85-znaczenie-strategiczne&quot; aria-label=&quot;czym są value objects i jakie mają znaczenie strategiczne permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Czym są Value Objects i jakie mają znaczenie strategiczne&lt;/h2&gt;
+&lt;p&gt;Jeśli miałbym wymienić najistotniejszą dla mnie cechę Value Object to było by to znaczenie biznesowe. I tak, prostym zmiennym nadajemy nowego więcej mówiącego znaczenia biznesowego. Dzięki czemu string np. przestaje być stringiem a jest nazwiskiem, flot/int lub inny zestaw cyfr staje się wartością pieniądza. To nie wszystko, bo przecież czy jeśli mamy pieniądze to czy suma dwóch “pieniędzy”, suma dwóch float da nam poprawny wynik ? Nie koniecznie, ponieważ jeśli nie weżniemy pod uwagę waluty, to ta suma już nie będzie sensowną, gdy sumujemy PLN z EUR. &lt;/p&gt;
+&lt;h2 id=&quot;zysk-biznesowy&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#zysk-biznesowy&quot; aria-label=&quot;zysk biznesowy permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Zysk biznesowy&lt;/h2&gt;
+&lt;p&gt;Weźmy dla przykładu 10.00 i zastanówmy się czym to jest. Hymmm … Ciężko wymyślić nie ? A jeśli powiemy że jest to 10.00 l, a w dodatku nazwiemy to
+BottleCapacity. Aha … więc jest to już czymś konkretniejszym - jest to pojemność butelki. Pojemność nie może być ujemna, więc będzie zawsze dodatnia. Więc możemy powiedzieć, że poprawne są tylko wartości większe od 0, to już daje nam jakiś obraz walidacji, lub zakresów biznesowych, które niesie ze sobą ten obiekt. &lt;/p&gt;
+&lt;h2 id=&quot;primitive-obsession&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#primitive-obsession&quot; aria-label=&quot;primitive obsession permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Primitive Obsession&lt;/h2&gt;
+&lt;p&gt;Dokładnie tak jak wspomniałem wyżej. Tytułowy code smell, jakim jest primitive obsession to zjawisko nadużywania typów prostych do reprezentacji idei/konceptu domeny. Przykłady: używamy liczby całkowitej do reprezentowania kwoty pieniężnej zamiast obiektu Money - czyli struktury pieniężnej, albo stringa, aby prezentować wiadomość.&lt;/p&gt;
+&lt;h2 id=&quot;immutable&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#immutable&quot; aria-label=&quot;immutable permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Immutable&lt;/h2&gt;
+&lt;p&gt;Niezmienność jest cechą, która opisuje Value Objects. Ta niezmienność VO, zapewnia nam gwarancje na poziomie kodu, że są to obiekty read-only. Jeśli zachodzi potrzeba zmiany wartości wyrażonej za pomocą VO, musimy tego dokonać przez utworzenie nowego VO.&lt;/p&gt;
+&lt;h2 id=&quot;side-effect&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#side-effect&quot; aria-label=&quot;side effect permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Side Effect&lt;/h2&gt;
+&lt;p&gt;Chodzi o to aby uniknąć zmiany obiektu “na boku” np. po przez money.value = money.value + 3, zamiast tego chcemy mieć nowy byt immutable, czyli Money(money.value + 3, currency).&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;from decimal import Decimal
+
+
+class Money:
+    value: Decimal
+    currency: str
+    
+    def __init__(self, value: Decimal, currency: str):
+        self.value = value
+        self.currency = currency
+    
+    def add(self, money: Money):
+        if self.currency == money.currency
+            return Money(self.value + money.value, money.currency)
+        raise ValidationError(&quot;Different currency&quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Czemu to takie ważne ? Przypuśćmy że mamy taka sytuację:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&gt;&gt;&gt; money = Money(Decimal(&quot;5&quot;), &quot;PLN&quot;)
+
+&gt;&gt;&gt; currency_conversion(money, &quot;USD&quot;)
+7 USD
+
+&gt;&gt;&gt; money.value
+7
+
+&gt;&gt;&gt; money.currency
+USD&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Przykład pokazuje idealnie jak błędy w currency_conversion, są siane w głąb naszego kodu.&lt;/p&gt;
+&lt;h2 id=&quot;comparasion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#comparasion&quot; aria-label=&quot;comparasion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Comparasion&lt;/h2&gt;
+&lt;p&gt;Musimy też pamiętać o tym aby zaimplementować mechanizm porównania naszych VO, zrezygnowaliśmy z prymitywnej prezentacji naszego konceptu biznesowego, dlatego musimy opisać proces porównania dwóch VO.&lt;/p&gt;
+&lt;h2 id=&quot;przykład&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#przyk%C5%82ad&quot; aria-label=&quot;przykład permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Przykład&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;from dataclasses import dataclass
+from decimal import Decimal
+
+
+@dataclass(frozen=True)
+class Money:
+    __value: Decimal
+    __currency: str
+
+    @staticmethod
+    def from_int(value: int, currency: str) -&gt; &apos;Money&apos;:
+        return Money(Decimal(value)/100, currency)
+
+    @staticmethod
+    def from_flot(value: float, currency: str) -&gt; &apos;Money&apos;:
+        return Money(Decimal(value), currency)
+
+    def percentage(self, percentage: int) -&gt; &apos;Money&apos;:
+        return Money(Decimal(percentage * self.__value / Decimal(&quot;100.0&quot;)), self.__currency)
+
+    def to_int(self) -&gt; int:
+        return int(self.__value * 100)
+
+    def to_flot(self) -&gt; float:
+        return float(self.__value)
+
+    def __add__(self, other: &apos;Money&apos;) -&gt; &apos;Money&apos;:
+        if self.__currency == other.__currency:
+            return Money(self.__value + other.__value, self.__currency)
+        raise AttributeError(&quot;Different currencies&quot;)
+
+    def __sub__(self, other: &apos;Money&apos;) -&gt; &apos;Money&apos;:
+        if self.__currency == other.__currency:
+            return Money(self.__value - other.__value, self.__currency)
+        raise AttributeError(&quot;Different currencies&quot;)
+
+    def __eq__(self, other: &apos;Money&apos;) -&gt; bool:
+        return self.__value == other.__value and self.__currency == other.__currency
+
+    def __str__(self) -&gt; str:
+        return f&quot;{self.__value:.2f} {self.__currency}&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Testy:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;from unittest import TestCase
+from money import Money
+
+
+class TestMoney(TestCase):
+
+    def test_can_create_money_from_integer(self):
+        self.assertEqual(&quot;100.00 USD&quot;, str(Money.from_int(10000, &quot;USD&quot;)))
+        self.assertEqual(&quot;0.00 PLN&quot;, str(Money.from_int(0, &quot;PLN&quot;)))
+        self.assertEqual(&quot;10.12 EUR&quot;, str(Money.from_int(1012, &quot;EUR&quot;)))
+
+    def test_should_project_money_to_integer(self):
+        self.assertEqual(10, Money.from_int(10, &quot;USD&quot;).to_int())
+        self.assertEqual(0, Money.from_int(0, &quot;USD&quot;).to_int())
+        self.assertEqual(5, Money.from_int(5, &quot;USD&quot;).to_int())
+
+    def test_should_project_money_to_float(self):
+        self.assertEqual(10.10, Money.from_int(1010, &quot;USD&quot;).to_flot())
+        self.assertEqual(0.12, Money.from_int(12, &quot;USD&quot;).to_flot())
+        self.assertEqual(5.11, Money.from_int(511, &quot;USD&quot;).to_flot())
+
+    def test_can_add_money(self):
+        self.assertEqual(Money.from_int(1000, &quot;USD&quot;), Money.from_int(500, &quot;USD&quot;) + Money.from_int(500, &quot;USD&quot;))
+        self.assertEqual(Money.from_int(1042, &quot;USD&quot;), Money.from_int(1020, &quot;USD&quot;) + Money.from_int(22, &quot;USD&quot;))
+        self.assertEqual(Money.from_int(0, &quot;USD&quot;), Money.from_int(0, &quot;USD&quot;) + Money.from_int(0, &quot;USD&quot;))
+        self.assertEqual(Money.from_int(6, &quot;USD&quot;), Money.from_int(4, &quot;USD&quot;) + Money.from_int(2, &quot;USD&quot;))
+
+        self.assertRaises(AttributeError, lambda: Money.from_int(3, &quot;PLN&quot;) + Money.from_int(2, &quot;USD&quot;))
+
+    def test_can_subtract_money(self):
+        self.assertEqual(Money.from_int(0, &quot;USD&quot;), Money.from_int(50, &quot;USD&quot;) - Money.from_int(50, &quot;USD&quot;))
+        self.assertEqual(Money.from_int(998, &quot;USD&quot;), Money.from_int(1020, &quot;USD&quot;) - Money.from_int(22, &quot;USD&quot;))
+        self.assertEqual(Money.from_int(1, &quot;USD&quot;), Money.from_int(3, &quot;USD&quot;) - Money.from_int(2, &quot;USD&quot;))
+
+        self.assertRaises(AttributeError, lambda: Money.from_int(3, &quot;PLN&quot;) - Money.from_int(2, &quot;USD&quot;))
+
+    def test_can_calculate_percentage(self):
+        self.assertEqual(&quot;30.00 USD&quot;, str(Money.from_int(10000, &quot;USD&quot;).percentage(30)))
+        self.assertEqual(&quot;26.40 USD&quot;, str(Money.from_int(8800, &quot;USD&quot;).percentage(30)))
+        self.assertEqual(&quot;88.00 USD&quot;, str(Money.from_int(8800, &quot;USD&quot;).percentage(100)))
+        self.assertEqual(&quot;0.00 USD&quot;, str(Money.from_int(8800, &quot;USD&quot;).percentage(0)))
+        self.assertEqual(&quot;13.20 USD&quot;, str(Money.from_int(4400, &quot;USD&quot;).percentage(30)))
+        self.assertEqual(&quot;0.30 USD&quot;, str(Money.from_int(100, &quot;USD&quot;).percentage(30)))
+        self.assertEqual(&quot;0.00 USD&quot;, str(Money.from_int(1, &quot;USD&quot;).percentage(40)))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Czym żyje dzisiaj moje IT]]></title><description><![CDATA[Dzielę się z Tobą, moimi źródłami do inspiracji, wiedzy i miejscami, które dostarczają mi w świecie It rozrywki]]></description><link>https://dragarthpl.github.io//posts/czym-zyje-dzisiaj-moje-it</link><guid isPermaLink="false">https://dragarthpl.github.io//posts/czym-zyje-dzisiaj-moje-it</guid><pubDate>Thu, 28 May 2020 08:13:32 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#przywitanie&quot;&gt;Przywitanie&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#o-czym-b%C4%99dzie-ten-post&quot;&gt;O czym będzie ten post&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#podcasty-i-ludzie-kt%C3%B3rych-ogl%C4%85dam&quot;&gt;Podcasty i ludzie, których oglądam&lt;/a&gt;&lt;/li&gt;
@@ -10,13 +145,13 @@
 &lt;h2 id=&quot;o-czym-będzie-ten-post&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#o-czym-b%C4%99dzie-ten-post&quot; aria-label=&quot;o czym będzie ten post permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;O czym będzie ten post&lt;/h2&gt;
 &lt;p&gt;Postanowiłem, że ten post będzie o tym w jaki sposób, dostarczam sobie nowych treści i ciekawostek ze świata IT. Tutaj Drogi czytelniku chce Ci przedstawić kilka źródeł - nie jedynych - z których sam czerpię nie tylko inspirację, ale też wiedzę, jak również czasami rozrywkę. Rozrywkę ? Tak, żyjemy w takich czasach, w których IT jest moim zdaniem również formą rozrywki, w końcu te wszystkie meetup’y, konferencje itp. mają nie tylko dostarczyć Ci wiedzy, zajawki, ale też rozrywki.&lt;/p&gt;
 &lt;h2 id=&quot;podcasty-i-ludzie-których-oglądam&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#podcasty-i-ludzie-kt%C3%B3rych-ogl%C4%85dam&quot; aria-label=&quot;podcasty i ludzie których oglądam permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Podcasty i ludzie, których oglądam&lt;/h2&gt;
-&lt;p&gt;Tutaj chciałem odkryć przed Tobą choć jedno nowe źródełko, z którego możesz czerpać o IT. Właśnie teraz będzie mi miło, jeśli mi się to uda. Natomiast jeśli już słyszałeś albo oglądałeś ktoyś z poniższych, to może chociaż potwierdzę, że lubimy ten sam content. Przejdźmy do rzeczy, czyli co oglądam:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/channel/UCYG1Pkg1jbnYxfJvM-1K5yg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Śniadanie z programowaniem&lt;/a&gt; - stajnia “Just Join It”, bardzo lubię to źródełko, gdyż chłopaki dostarczają zawsze ciekawych nowinek ze świata IT, dzięki czemu wiem co aktualnie dzieje się w świecie. Obecnie audycja jest podzielona na cześć frontend i backend. Każdy z was w jednej i drugiej audycji znajdzie coś dla siebie. Moim zdaniem lepiej mieć chociażby ogólne pojęcie z kim współpracujemy czy to z backendem, czy to z frontend.&lt;/p&gt;
+&lt;p&gt;Tutaj chciałem odkryć przed Tobą choć jedno nowe źródełko, z którego możesz czerpać o IT. Właśnie teraz będzie mi miło, jeśli mi się to uda. Natomiast jeśli już słyszałeś albo oglądałeś któryś z poniższych, to może chociaż potwierdzę, że lubimy ten sam content. Przejdźmy do rzeczy, czyli co oglądam:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/channel/UCYG1Pkg1jbnYxfJvM-1K5yg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Śniadanie z programowaniem&lt;/a&gt; - stajnia “Just Join It”, bardzo lubię to źródełko, gdyż chłopaki dostarczają zawsze ciekawych nowinek ze świata IT, dzięki czemu wiem co aktualnie dzieje się w świecie. Obecnie podcast jest podzielony na cześć frontend i backend. Każdy z was w jednej i drugiej audycji znajdzie coś dla siebie. Moim zdaniem lepiej mieć chociażby ogólne pojęcie z kim współpracujemy zarówno nt. backendu, jak również frontendu i wice versa, dlatego warto oglądać jeden i drugi.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://patoarchitekci.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Patoarchitekci&lt;/a&gt; - podcast wymiot, bardzo lubię słuchać chłopaków. Tutaj również, można wręcz delektować się “mięsem” nowinek i wiedzy ze świata IT. Ogrom wiedzy nt. architektury i DevOps, coś, co tygryski lubią najbardziej. Bardzo, bardzo polecam.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://devtalk.pl/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;DevTalk - Maciej Aniserowicz&lt;/a&gt; - w sumie to poniekąd moja eksploracja IT w głąb, właśnie od Macieja się zaczęła. DevTalk to świetna dawka wiedzy na konkretny temat. Maciej zaprasza gościa, z którym rozmawia na określony temat. Świetny dawka wiedzy i nie raz rozrywki. Polecam również resztę contentu od Macieja. Dla mnie się podoba ;) Jeśli szukasz gównie kanału z “rozrywką IT” to polecam Macieja.&lt;/p&gt;
 &lt;h2 id=&quot;linkedin&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#linkedin&quot; aria-label=&quot;linkedin permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;LinkedIn&lt;/h2&gt;
 &lt;p&gt;Co mogę napisać o tym kanale. Przede wszystkim to, że raczej dostaniemy tutaj newsy związane z naszą pracą/zawodem, zainteresowaniami, czyli w moim przypadku z IT. Z kolei — i jest to warte zaznaczenia — nie koniecznie już związane rzeczami poza, czyli contentem populistycznym. Dla mnie ostatnio było to super, ponieważ jak mam np. do wyboru takiego Facebooka, gdzie content jest zdecydowanie populistyczny, to tutaj mamy tylko to, co nas interesuje.&lt;/p&gt;
-&lt;p&gt;Dla przykładu w obecnym czasie covidu, który właśnie przeżywamy, to poniekąd było dla mnie wybawienie od niechcianej treści. Oczywiście trzeba zaznaczyć, że nie jest idealnie, bo po pewnym czasie — w szczyci covidowego podniecenia — też były tutaj newsy przeze mnie nie pożądane, ale zawsze treść była chociaż mieszana, a nie tylko covidowa.&lt;/p&gt;
+&lt;p&gt;Dla przykładu w obecnym czasie covidu, który właśnie przeżywamy, to poniekąd było dla mnie wybawienie od niechcianej treści. Oczywiście trzeba zaznaczyć, że nie jest idealnie, bo po pewnym czasie — w szczycie covidowego podniecenia — też były tutaj newsy przeze mnie nie pożądane, ale zawsze treść była chociaż mieszana, a nie tylko covidowa.&lt;/p&gt;
 &lt;h2 id=&quot;podsumowanie&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#podsumowanie&quot; aria-label=&quot;podsumowanie permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Podsumowanie&lt;/h2&gt;
 &lt;p&gt;A miałem napisać ten wpis w jedyne 30 minut i albo za długo piszę, albo za bardzo się “rozczulam”. Sam nie wiem, dlaczego to tyle czasu zjada :) Przede wszystkim mam nadzieję, że udało Ci się znaleźć tutaj coś wartościowego. Mam nadzieję, że wejdziesz choć raz do któregoś z zaproponowanych przez mnie źródeł.&lt;/p&gt;
 &lt;p&gt;Pozdro i dzięki, że mnie czytałeś.&lt;/p&gt;</content:encoded></item></channel></rss>
